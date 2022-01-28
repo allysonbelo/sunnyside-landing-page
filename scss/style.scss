@@ -1,0 +1,129 @@
+@use "sass:list";
+@use "sass:math";
+
+$Soft-red: hsl(7, 99%, 70%);
+$Yellow: hsl(51, 100%, 49%);
+$Dark-desaturated-cyan: hsl(167, 40%, 24%);
+$Dark-blue: hsl(198, 62%, 26%);
+$Dark-moderate-cyan: hsl(168, 34%, 41%);
+$Very-dark-desaturated-blue: hsl(212, 27%, 19%);
+$Very-dark-grayish-blue: hsl(213, 9%, 39%);
+$Dark-grayish-blue: hsl(232, 10%, 55%);
+$Grayish-blue: hsl(210, 4%, 67%);
+$White: hsl(0, 0%, 100%);
+
+@mixin flx($property, $jtf-cnt) {
+    #{$property}: $jtf-cnt;
+    display: flex;
+}
+
+@mixin for-phone-only {
+    @media (max-width: 900px) {
+        @content;
+    }
+}
+
+@mixin for-desktop-only {
+    @media (min-width: 901px) {
+        @content;
+    }
+}
+
+@function calculaRem($size) {
+    @return math.div($size, 16px) * 1rem;
+}
+
+@mixin fontSize($size) {
+    font-size: calculaRem($size);
+}
+
+.attribution {
+    font-size: 11px;
+    text-align: center;
+
+    a {
+        color: hsl(228, 45%, 44%);
+    }
+}
+
+// font-family: 'Barlow', sans-serif;
+// font-family: 'Fraunces', serif;
+
+.container {
+    @include flx(align-items, center);
+    flex-direction: column;
+}
+
+.content {
+
+    background-color: tomato;
+
+    @include for-desktop-only {
+        max-width: 1540px;
+    }
+
+    .header {
+        padding: 30px;
+        position: absolute;
+        z-index: 2;
+        display: flex;
+        width: 100%;
+
+        @include for-desktop-only(){
+            @include flx(justify-content, space-between);
+        }
+
+        &__nav{
+            display: none;
+
+            @include for-desktop-only(){
+                display: block;
+            }
+
+            .list{
+                list-style: none;
+                display: flex;
+                column-gap: 40px;
+                font-family: 'Barlow', sans-serif;
+                color: $White;
+
+                .button{
+                    background-color: $White;
+                    color: black;
+                    text-transform: uppercase;
+                    font-family: 'Fraunces', serif;
+                    padding: 20px;
+                }
+            }
+        }
+    }
+
+    .banner {
+        background: url(../images/mobile/image-header.jpg) no-repeat center center /cover;
+        min-height: 600px;
+        position: relative;
+        @include flx(justify-content, center);
+
+        @include for-desktop-only() {
+            background: url(../images/desktop/image-header.jpg) no-repeat center center / cover;
+            min-height: 100vh;
+        }
+
+        &__title {
+            @include fontSize(35px);
+            color: $White;
+            font-family: 'Fraunces', serif;
+            font-weight: 900;
+            line-height: 1.15;
+            letter-spacing: 10px;
+            position: absolute;
+            top: 20%;
+            text-align: center;
+            text-transform: uppercase;
+
+            @include for-desktop-only(){
+                @include fontSize(60px);
+            }
+        }
+    }
+}
