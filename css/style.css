@@ -12,9 +12,6 @@
   flex-direction: column;
 }
 
-.content {
-  background-color: tomato;
-}
 @media (min-width: 901px) {
   .content {
     max-width: 1540px;
@@ -25,12 +22,21 @@
   position: absolute;
   z-index: 2;
   display: flex;
+  align-items: center;
   width: 100%;
 }
 @media (min-width: 901px) {
   .content .header {
     justify-content: space-between;
     display: flex;
+  }
+}
+.content .header__logo {
+  width: 100%;
+}
+@media (min-width: 901px) {
+  .content .header__logo .logo {
+    height: 35px;
   }
 }
 .content .header__nav {
@@ -44,16 +50,37 @@
 .content .header__nav .list {
   list-style: none;
   display: flex;
+  align-items: center;
   column-gap: 40px;
   font-family: "Barlow", sans-serif;
   color: white;
 }
 .content .header__nav .list .button {
   background-color: white;
+  border-radius: 30px;
   color: black;
   text-transform: uppercase;
   font-family: "Fraunces", serif;
-  padding: 20px;
+  padding: 15px 20px;
+}
+.content .header__menu {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  cursor: pointer;
+}
+.content .header__menu .line {
+  width: 100%;
+  height: 3px;
+  background-color: white;
+}
+@media (min-width: 901px) {
+  .content .header__menu {
+    display: none;
+  }
 }
 .content .banner {
   background: url(../images/mobile/image-header.jpg) no-repeat center center/cover;
@@ -61,12 +88,6 @@
   position: relative;
   justify-content: center;
   display: flex;
-}
-@media (min-width: 901px) {
-  .content .banner {
-    background: url(../images/desktop/image-header.jpg) no-repeat center center/cover;
-    min-height: 100vh;
-  }
 }
 .content .banner__title {
   font-size: 2.1875rem;
@@ -76,7 +97,7 @@
   line-height: 1.15;
   letter-spacing: 10px;
   position: absolute;
-  top: 20%;
+  top: 25%;
   text-align: center;
   text-transform: uppercase;
 }
@@ -84,6 +105,115 @@
   .content .banner__title {
     font-size: 3.75rem;
   }
+}
+.content .banner::after {
+  content: "";
+  position: absolute;
+  background: url(../images/icon-arrow-down.svg) no-repeat left 50% top 70%/auto;
+  background-size: 40px;
+  width: 100%;
+  height: 100%;
+  animation: arrowDown 3s infinite forwards;
+}
+@keyframes arrowDown {
+  0% {
+    top: 0%;
+  }
+  50% {
+    top: -5%;
+  }
+  100% {
+    top: 0%;
+  }
+}
+@media (min-width: 901px) {
+  .content .banner {
+    background: url(../images/desktop/image-header.jpg) no-repeat center center/cover;
+    min-height: 100vh;
+  }
+  .content .banner::after {
+    background: url(../images/icon-arrow-down.svg) no-repeat left 50% top 53%;
+  }
+}
+.content .main {
+  display: grid;
+  grid-template-areas: "egg" "brand" "cup" "audience" "design" "photography";
+}
+@media (min-width: 901px) {
+  .content .main {
+    grid-template-areas: "brand egg" "cup audience" "design photography";
+  }
+}
+.content .main .egg {
+  grid-area: egg;
+  width: 100%;
+  height: 300px;
+  background: #ffd302 url(../images/mobile/image-transform.jpg) no-repeat center top/contain;
+  background-size: 100%;
+}
+@media (min-width: 901px) {
+  .content .main .egg {
+    background: #ffd302 url(../images/desktop/image-transform.jpg) no-repeat center top/contain;
+    background-size: 100%;
+    height: 600px;
+  }
+}
+.content .main .brand {
+  grid-area: brand;
+  width: 100%;
+  height: 500px;
+  background-color: white;
+}
+.content .main .cup {
+  grid-area: cup;
+  width: 100%;
+  height: 300px;
+  background: #fe7f70 url(../images/mobile/image-stand-out.jpg) no-repeat center top/contain;
+  background-size: 100%;
+}
+@media (min-width: 901px) {
+  .content .main .cup {
+    background: #fe7f70 url(../images/desktop/image-stand-out.jpg) no-repeat center top/contain;
+    background-size: 100%;
+    height: 600px;
+  }
+}
+.content .main .audience {
+  grid-area: audience;
+  width: 100%;
+  height: 500px;
+  background-color: white;
+}
+.content .main .design {
+  grid-area: design;
+  width: 100%;
+  height: 500px;
+  background: #a2dcce url(../images/mobile/image-graphic-design.jpg) no-repeat center top/contain;
+  background-size: 100%;
+}
+@media (min-width: 901px) {
+  .content .main .design {
+    background: #a2dcce url(../images/desktop/image-graphic-design.jpg) no-repeat center top/contain;
+    background-size: 100%;
+    height: 600px;
+  }
+}
+.content .main .photography {
+  grid-area: photography;
+  width: 100%;
+  height: 500px;
+  background: #5bcaff url(../images/mobile/image-photography.jpg) no-repeat center top/contain;
+  background-size: 100%;
+}
+@media (min-width: 901px) {
+  .content .main .photography {
+    background: #5bcaff url(../images/desktop/image-photography.jpg) no-repeat center top/contain;
+    background-size: 100%;
+    height: 600px;
+  }
+}
+.content .main .title {
+  color: red;
 }
 
 /*# sourceMappingURL=style.css.map */
